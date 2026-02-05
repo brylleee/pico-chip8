@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "author": "itokairo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 44.85,
+      "left": 13.2,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": 7.6, "left": 236, "attrs": {} },
+    { "type": "wokwi-text", "id": "text1", "top": 230.4, "left": 288, "attrs": { "text": "A" } },
+    { "type": "wokwi-text", "id": "text2", "top": 230.4, "left": 403.2, "attrs": { "text": "B" } },
+    { "type": "wokwi-text", "id": "text3", "top": 67.2, "left": 460.8, "attrs": { "text": "C" } },
+    { "type": "wokwi-text", "id": "text4", "top": 124.8, "left": 460.8, "attrs": { "text": "D" } },
+    { "type": "wokwi-text", "id": "text5", "top": 172.8, "left": 460.8, "attrs": { "text": "E" } },
+    { "type": "wokwi-text", "id": "text6", "top": 230.4, "left": 460.8, "attrs": { "text": "F" } },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 79.94,
+      "left": 125.03,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 19.96, "left": 163.2, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 194.4,
+      "left": 145.8,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-logo", "id": "logo1", "top": 268.8, "left": 38.4, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text7",
+      "top": 28.8,
+      "left": 537.6,
+      "attrs": {
+        "text": "CHIP-8 is a virtual interpreted\nprogramming language used in\nCOSMAC VIP and Telmac 1800\nback in the 70s."
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text8",
+      "top": 144,
+      "left": 537.6,
+      "attrs": {
+        "text": "This project emulates the\ninstruction set of the original\nCHIP-8. Running on 700Hz"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 55.4,
+      "left": -38.4,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text9",
+      "top": 28.8,
+      "left": -38.4,
+      "attrs": { "text": "QUIT" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "keypad1:R1", "pico:GP9", "blue", [ "h-345.6", "v-182.4" ] ],
+    [ "keypad1:R2", "pico:GP8", "blue", [ "v9.6", "h-365.2", "v-201.6" ] ],
+    [ "keypad1:R3", "pico:GP7", "blue", [ "v19.2", "h-384.3", "v-220.8" ] ],
+    [ "keypad1:R4", "pico:GP6", "blue", [ "v28.8", "h-403.4", "v-240" ] ],
+    [ "keypad1:C1", "pico:GP5", "#8f4814", [ "v38.4", "h-422.5", "v-268.8" ] ],
+    [ "keypad1:C2", "pico:GP4", "#8f4814", [ "v48", "h-441.6", "v-288" ] ],
+    [ "keypad1:C3", "pico:GP3", "#8f4814", [ "v57.6", "h-460.95", "v-307.2" ] ],
+    [ "keypad1:C4", "pico:GP2", "#8f4814", [ "v67.2", "h-480.3", "v-326.4" ] ],
+    [ "oled1:GND", "pico:GND.8", "black", [ "v-38.4", "h-67.2", "v28.8" ] ],
+    [ "oled1:SCL", "pico:GP17", "limegreen", [ "v-19.2", "h-76.5", "v86.4" ] ],
+    [ "oled1:SDA", "pico:GP16", "cyan", [ "v-28.8", "h-76.73", "v105.6" ] ],
+    [ "oled1:VCC", "vcc1:VCC", "red", [ "v0" ] ],
+    [ "bz1:2", "pico:GP13", "yellow", [ "v38.4", "h-182.8", "v-105.6" ] ],
+    [ "bz1:1", "pico:GND.4", "black", [ "v28.8", "h-163.2", "v-86.4" ] ],
+    [ "pico:GND.1", "btn1:2.r", "black", [ "h0" ] ],
+    [ "btn1:1.r", "pico:GP1", "magenta", [ "v0", "h10.4", "v9.6" ] ]
+  ],
+  "dependencies": {}
+}
